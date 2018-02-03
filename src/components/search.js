@@ -1,7 +1,7 @@
 angular.module('video-player')
 
 .component('search', {
-  controller : function(){
+  controller : function(youTube){
     this.lookup = function(query) {
       this.search(query)
     }
@@ -11,3 +11,6 @@ angular.module('video-player')
   },
   templateUrl: `./src/templates/search.html`
 });
+
+
+// youtube.get(query, callback)
