@@ -13,4 +13,3 @@ angular.module('video-player')
 });
 
 
-// youtube.get(query, callback)

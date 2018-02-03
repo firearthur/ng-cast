@@ -1,33 +1,24 @@
 angular.module('video-player')
 .service('youTube', ['$http' ,function($http){
   this.get = function(query, callback){
-    $http({
+    console.log('this is the query ', query);
+    return $http({
     method: 'GET',
     url: 'https://www.googleapis.com/youtube/v3/search',
-    data: {
+    params: {
             'maxResults': '5',
             'part': 'snippet',
-            'q': 'innoutburgers',
-            'type': 'video'
+            'key': window.YOUTUBE_API_KEY,
+            'q': query,
           }
     }).then(function successCallback(response) {
-      // this callback will be called asynchronously
-      // when the response is available
-      // callback(response);
-      console.log(response);
+   
+      console.log('I succeeded and the response is ',response.data.items);
+      callback(response.data.items);
     }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-    });  
+   
+      console.log('I got an error and the response is ', response);
+    }); 
   }
 }]);
-
-
-// 'https://www.googleapis.com/youtube/v3/search',
-//                 {'maxResults': '25',
-//                  'part': 'snippet',
-//                  'q': 'surfing',
-//                  'type': ''}
-
-
 
